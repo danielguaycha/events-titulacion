@@ -1,12 +1,13 @@
 @extends('layouts.index')
 @section('content')
     @include('_globals.home._header', ['rel' => true])
-    <!-- Slider --->
-    <section class="slider-area" id="inicio">
+    <!-- Slider -->
+    <section class="slider-area" id="inicio-1">
+        <h2 class="d-none">Info</h2>
         <div class="swiper-container">
             <div class="swiper-wrapper">
-                <div class="swiper-slide" style="background-image: url({{ asset('img/home/slider-1.jpg') }});"></div>
-                <div class="swiper-slide" style="background-image: url({{ asset('img/home/slider-3.jpg') }});"></div>
+                <div class="swiper-slide" style="background-image: url({{ asset('img/home/slider-1.png') }});"></div>
+                <div class="swiper-slide" style="background-image: url({{ asset('img/home/slider-2.png') }});"></div>
             </div>
             <div class="swiper-pagination"></div>
 
@@ -18,8 +19,9 @@
     </section>
 
     <!-- Carreras -->
-    <section class="carreras-area" id="carreras"
+    <section class="carreras-area" id="carreras" aria-roledescription="Carreras"
              style="background-image: url({{ asset('img/home/ei-logo-gray.png') }})">
+        <h2 class="d-none">Carreras</h2>
         <div class="section-title">
             <h3>Carreras</h3>
             <span class="divider">
@@ -65,6 +67,7 @@
 
     <!--- Areas de estudio -->
     <section class="areas-estudio" id="areas">
+        <h2 class="d-none">Áreas de estudio</h2>
         <div class="container">
             <div class="section-title dark">
                 <h3>Áreas de estudio</h3>
@@ -85,7 +88,7 @@
                     <!-- Bases de datos -->
                     <div data-aos="flip-up" class="topic topic-icon bg-blue"><i class="fi fi-servidor"></i></div>
                     <div data-aos="flip-up" class="topic topic-text">Bases de datos</div>
-                    <!-- Sistemas operativos--->
+                    <!-- Sistemas operativos-->
                     <div data-aos="flip-up" class="topic topic-text">Sistemas Operativos</div>
                     <div data-aos="flip-up" class="topic topic-icon bg-cyan"><i class="fi fi-servidor-1"></i></div>
                     <!-- Redes de datos -->
@@ -100,6 +103,7 @@
     </section>
 
     <section class="acerca-de" id="acerca-de">
+        <h2 class="d-none">Acerca de nosotros</h2>
         <div class="container">
             <div class="section-title">
                 <h3>Acerca de Nosotros</h3>
@@ -111,7 +115,7 @@
             </div>
             <!--Mision-->
             <div class="row ei-info-content">
-                <div class="col-md-6 ei-info" data-aos="fade-right">
+                <div class="col-md-6 ei-info" data-aos="fade-bottom">
                     <h4 class="ei-info-title">MISIÓN</h4>
                     <div class="ei-info-cita">
                         <i class="fi fi-cita"></i>
@@ -123,16 +127,16 @@
                         </p>
                     </div>
                 </div>
-                <div class="col-md-6 ei-info-img">
-                    <img src="{{ asset('img/home/mision.png') }}" data-aos="fade-left" alt="Misión">
+                <div class="col-md-6 ei-info-img" data-aos="fade-top" >
+                    <img src="{{ asset('img/home/mision.png') }}" alt="Imagen de Misión">
                 </div>
             </div>
             <!--Vision-->
             <div class="row ei-info-content">
-                <div class="col-md-6 ei-info-img">
-                    <img src="{{ asset('img/home/vision.png') }}" data-aos="fade-right" alt="Visión">
+                <div class="col-md-6 ei-info-img" data-aos="fade-bottom">
+                    <img src="{{ asset('img/home/vision.png') }}"  alt="Imagen de Visión">
                 </div>
-                <div class="col-md-6 ei-info" data-aos="fade-right">
+                <div class="col-md-6 ei-info" data-aos="fade-top">
                     <h4 class="ei-info-title">VISIÓN</h4>
                     <div class="ei-info-cita">
                         <i class="fi fi-cita"></i>
@@ -148,11 +152,13 @@
     </section>
 
     <section class="gallery">
+        <h2 class="d-none">Galería</h2>
         <div class="grid-gallery">
             @for ($i = 1; $i <= 8; $i++)
-                <div class="grid-item" data-aos="flip-up"
+                <div class="grid-item" data-aos="fade-top"
                      style="background-image: url({{ asset('img/home/'.$i.'.jpg') }})">
-                    <a href="{{ asset('img/home/'.$i.'.jpg') }}" data-fancybox="gallery" data-caption=""></a>
+                    <a href="{{ asset('img/home/'.$i.'.jpg') }}" aria-label="Imagen Escuela informática {{ $i }}"
+                       data-fancybox="gallery" data-caption=""></a>
                 </div>
             @endfor
         </div>
@@ -167,8 +173,8 @@
         </div>
         <div class="container">
             <div class="row">
-                <div class="col-md-6 ei-info-img" data-aos="flip-down">
-                    <img src="{{ asset('img/home/contacto.png') }}" alt="Contacto">
+                <div class="col-md-6 ei-info-img" >
+                    <img src="{{ asset('img/home/contacto.png') }}" alt="Imagen de Contacto"  data-aos="fade-top">
                     <div class="ei-info-text">
                         <div class="ei-info-icon">
                             <i class="fi fi-marcador-de-posicion"></i>
@@ -181,19 +187,19 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 text-center" data-aos="flip-down">
-                    <form action="{{ route('contact') }}" method="post">
+                <div class="col-md-6 text-center" >
+                    <form action="{{ route('contact') }}" method="post"  data-aos="fade-top">
                         @csrf
-                        <input type="text" placeholder="Nombre" name="name"
+                        <input type="text" placeholder="Nombre" name="name" aria-label="Nombre"
                                value="{{ old('name') }}"
                                class="ei-form" required maxlength="75"/>
-                        <input type="email" placeholder="Correo" name="email"
+                        <input type="email" placeholder="Correo" name="email" aria-label="Correo"
                                value="{{ old('email') }}"
                                class="ei-form" required/>
-                        <input type="text" placeholder="Asunto" name="topic"
+                        <input type="text" placeholder="Asunto" name="topic" aria-label="Asunto"
                                value="{{ old('topic') }}"
                                class="ei-form" required maxlength="100"/>
-                        <textarea rows="3" placeholder="Mensaje"
+                        <textarea rows="3" placeholder="Mensaje" aria-label="Mensaje"
                                   class="ei-form" required name="message"
                                   maxlength="150">{{ old('message') }}</textarea>
                         <button type="submit" class="ei-btn secondary rounded">Enviar mensaje</button>
@@ -203,7 +209,7 @@
         </div>
     </section>
 
-    <button id="btn-up" onclick="gotoTop()"><i class="fi fi-flecha-hacia-arriba"></i></button>
+    <button id="btn-up" aria-label="Subir" onclick="gotoTop()"><i class="fi fi-flecha-hacia-arriba"></i></button>
 
     @include('_globals.home._footer', ['rel' => true])
 

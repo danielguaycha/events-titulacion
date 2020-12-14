@@ -1,11 +1,12 @@
 @include('auth.verify-notify')
+
 <header>
-    <!-- Menu desktop--->
+    <!-- Menu desktop-->
     <nav class="container menu-main">
         <div class="logo">
             <a href="{{ url('/') }}">
-                <img src="{{ asset('img/ei-logo.webp') }}" alt="logo-ei">
-                <span>Escuela Informática</span>
+                <img src="{{ asset('img/ei-logo.webp') }}" alt="Imagen de Logo Escuela informática">
+                <h1>Escuela Informática</h1>
             </a>
         </div>
         <button class="menu-toggle" id="btn-menu" title="Abrir menú">
@@ -19,7 +20,7 @@
                         <div class="submenu" id="submenu">
                             <img
                                 src="{{ Avatar::create(Auth::user()->person->name . ' ' . Auth::user()->person->surname) }}"
-                                alt="Avatar">
+                                alt="Imagen de Avatar">
                             <ul>
                                 @can('events.*')
                                     <li><a href="{{ route('events.index') }}">Administrar</a></li>
@@ -73,11 +74,11 @@
         </div>
     </nav>
 </header>
-<!-- Menu responsive--->
+<!-- Menu responsive-->
 <aside class="menu-main-movil">
-    <button id="btn-close"><i class="fi fi-cancelar"></i></button>
+    <button id="btn-close" aria-label="Cerrar menu"><i class="fi fi-cancelar"></i></button>
     <ul class="menu-list-movil"></ul>
 </aside>
 
-<section class="overlay"></section>
+<div class="overlay"></div>
 
